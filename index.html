@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="./includes/stylesheets/tic-tac-toe-v1.0.0.css">
+</head>
+<body>
+    <!-- ttt game court starts -->
+    <div id="ttt-court-wrapper" class="ttt-court-wrapper">
+        <!-- ttt game result cross-lines starts -->
+        <div class="ttt-crossline-wrapper">
+            <div class="ttt-crossline">
+                <span id="cross-line-1" class="cross-line"></span>
+                <span id="cross-line-2" class="cross-line"></span>
+                <span id="cross-line-3" class="cross-line"></span>
+                <span id="cross-line-4" class="cross-line"></span>
+                <span id="cross-line-5" class="cross-line"></span>
+                <span id="cross-line-6" class="cross-line"></span>
+                <span id="cross-line-7" class="cross-line"></span>
+                <span id="cross-line-8" class="cross-line"></span>
+            </div>
+        </div>
+        <!-- ttt game result cross-line ends -->
+        <div class="ttt-row">
+            <div id="block-1" class="ttt-block" marked="false">
+                <span class="ttt-symbol"></span>
+            </div>
+            <div id="block-2" class="ttt-block" marked="false">
+                <span class="ttt-symbol"></span>
+            </div>
+            <div id="block-3" class="ttt-block" marked="false">
+                <span class="ttt-symbol"></span>
+            </div>
+        </div>
+        <div class="ttt-row">
+            <div id="block-4" class="ttt-block" marked="false">
+                <span class="ttt-symbol"></span>
+            </div>
+            <div id="block-5" class="ttt-block" marked="false">
+                <span class="ttt-symbol"></span>
+            </div>
+            <div id="block-6" class="ttt-block" marked="false">
+                <span class="ttt-symbol"></span>
+            </div>
+        </div>
+        <div class="ttt-row">
+            <div id="block-7" class="ttt-block" marked="false">
+                <span class="ttt-symbol"></span>
+            </div>
+            <div id="block-8" class="ttt-block" marked="false">
+                <span class="ttt-symbol"></span>
+            </div>
+            <div id="block-9" class="ttt-block" marked="false">
+                <span class="ttt-symbol"></span>
+            </div>
+        </div>
+    </div>
+    <!-- ttt game court ends -->
+    <!-- ttt game result display starts -->
+    <div class="ttt-result-wrapper">
+        <div id="ttt-human" class="ttt-player">
+            <span class="ttt-player-name">You: </span>
+            <span class="ttt-player-score">0</span>
+        </div>
+        <div id="ttt-computer" class="ttt-player">
+            <span class="ttt-player-name">Computer: </span>
+            <span class="ttt-player-score">0</span>
+        </div>
+    </div>
+    <!-- ttt game result display ends -->
+    <!-- ttt display result message starts -->
+    <div id="ttt-result-message">
+        <span id="ttt-message" class="ttt-message"></span>
+        <button id="ttt-reset-button" name="ttt-reset">Reset</button>
+    </div>
+    <!-- ttt display result message ends -->
+
+    <script src="./tic-tac-toe-v1.0.0.js"></script>
+</body>
+</html>
