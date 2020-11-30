@@ -161,7 +161,7 @@ const ticTacToe = function(){
 
         // test logs
         // console.log(theSetsArray);
-        console.log(theCrossArray);
+        // console.log(theCrossArray); // TEST DISPLAY
 
         // define array for possible O block
         let potentialOBlocks = [];
@@ -223,7 +223,7 @@ const ticTacToe = function(){
             });
 
             // test log
-            console.log(aboutToCrossed); // returns set name: "set1"
+            // console.log(aboutToCrossed); // returns set name: "set1": TEST DISPLAY
         }
         setsToBeCrossed(sets);
 
@@ -317,7 +317,7 @@ const ticTacToe = function(){
         findOBlocks(aboutToCrossed, potentialOBlocks);
 
         // test log oblock array
-        console.log(oBlockArray);
+        // console.log(oBlockArray); : TEST DISPLAY
 
         // Define function to mark the O
         function markTheO(arr1, arr2){
@@ -337,8 +337,8 @@ const ticTacToe = function(){
             }
 
             // Check if result occurs then only run code below
-                // else stop here: return
-                checkResult(setsName);
+            // else stop here: return
+            checkResult(setsName);
 
             // Insert O into proper block
             tttBlocks.forEach(element => {
@@ -353,6 +353,10 @@ const ticTacToe = function(){
                             element.setAttribute('marked', 'circled');
                             // Insert the X symbol
                             element.querySelector('.ttt-symbol').innerHTML = 'O';
+                            
+                            // Check if result occurs then only run code below
+                            // else stop here: return
+                            checkResult(setsName);
                         }
                     }
                 }
@@ -360,7 +364,7 @@ const ticTacToe = function(){
         }
         markTheO(oBlockArray, potentialOBlocks);
 
-        console.log('potential O blocks: ' + potentialOBlocks);
+        // console.log('potential O blocks: ' + potentialOBlocks); : TEST DISPLAY
 
     }
 
@@ -647,6 +651,24 @@ const ticTacToe = function(){
                     return;
                 }
 
+
+                // Check if match is a draw
+                let drawCounter = 0;
+                tttBlocks.forEach(block => {
+                    // incremenet counter by 1 for any block not marked as "false"
+                    if(block.getAttribute('marked') !== 'false'){
+                        drawCounter++;
+                    }
+                    // console.log(drawCounter);
+
+                    // if all blocks are filled but no set has matched: the length of tttBlocks object is equal to the counter
+                    if(drawCounter === tttBlocks.length && winningSet === ''){
+                        resultMessage = 'Match Draw';
+                        winningSet = '';
+                        return;
+                    }
+                });
+
                 // console.log(counterX);
                 // console.log(counterO);
             }
@@ -657,7 +679,7 @@ const ticTacToe = function(){
         displayScores(scorePlayer1, scorePlayer2, resultMessage);
 
     }
-    // checkResult(setsName); // TOBEDONE
+    // checkResult(setsName);
 
     // Define function for display scores
         // get the scores from saved data
@@ -667,7 +689,7 @@ const ticTacToe = function(){
         displayP1.innerHTML = scorePlayer1;
         displayP2.innerHTML = scorePlayer2;
 
-        console.log(winningSet);
+        // console.log(winningSet); : TEST DISPLAY
 
         // display message
         displayMessage.innerHTML = resultMessage;
@@ -736,9 +758,48 @@ const ticTacToe = function(){
 
     // Define function to reset the board
     function resetBoard(){
-        // rest the board
-        
+        // hide reset button
+        resetButton.setAttribute('style', 'display: none;');
+
+        // reset the board
+        resetData();
+
+        // reset Result Message and winning set data
+        resultMessage = '';
+        winningSet = '';
+
+        // display result html reset
+        displayMessage.innerHTML = '';
+
+        // set all block "marked" attributes to "false"
+        tttBlocks.forEach(element => {
+            // reset "marked" attribute to "false"
+            element.setAttribute('marked', 'false');
+            // clear the innerHTML marked as O and/or X
+            element.querySelector('.ttt-symbol').innerHTML = '';
+        });
+
+        // hide crossed lines and wrapper
+        crossLineWrapper.setAttribute('style', 'display: none;');
+
+        lineSet1.setAttribute('style', 'display: none;');
+        lineSet2.setAttribute('style', 'display: none;');
+        lineSet3.setAttribute('style', 'display: none;');
+        lineSet4.setAttribute('style', 'display: none;');
+        lineSet5.setAttribute('style', 'display: none;');
+        lineSet6.setAttribute('style', 'display: none;');
+        lineSet7.setAttribute('style', 'display: none;');
+        lineSet8.setAttribute('style', 'display: none;');
     }
+
+    // Define function for reset button
+    function resetButtonAction(){
+        resetButton.addEventListener('click', function(){
+            // call resetBoard() function
+            resetBoard();
+        })
+    }
+    resetButtonAction();
 
 };
 
